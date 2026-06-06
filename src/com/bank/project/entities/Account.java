@@ -41,8 +41,11 @@ public class Account {
 	}
 	
 	public void WithDraw(double a) throws DomainException{
-		if(a > WithDrawLimit || a >= 0) {
-			throw new DomainException("Withdraw error: The amount exceeds withdraw limit or minus 0");
+		if(a > WithDrawLimit || a < 0) {
+			throw new DomainException("The amount exceeds withdraw limit or minus 0");
+		}
+		else if(a > Balance) {
+			throw new DomainException("Not enough balance");
 		}
 		else {
 			Balance -= a; 

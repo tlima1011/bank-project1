@@ -38,7 +38,7 @@ public class Main {
 			// 400.00	
 			ler.close();
 		}catch(DomainException e) {
-			System.out.println(e.getMessage());
+			System.out.println("Withdraw error: "+ e.getMessage());
 		}
 	}
 }
