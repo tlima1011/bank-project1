@@ -18,20 +18,38 @@ public class Account {
 		Holder = holder;
 		Deposit(balance);
 		//Balance = balance;
-		WithDrawLimit = withDrawLimit;
+		//WithDrawLimit = withDrawLimit; 
+		ValidateWithDrawLimit(withDrawLimit);
 	}
 	
 	public void Deposit(double amount) throws DomainException { 
-		if(amount < 0) {
-			throw new DomainException("Valor do depósito não pode ser menor que 0");
+		if(amount <= 0) {
+			throw new DomainException("Valor do depósito não pode ser menor ou igual a 0");
 		}
 		else {
 			Balance += amount; 
 		}
 	}
 	
+	public void ValidateWithDrawLimit(double wd) throws DomainException{
+		if(wd <= 0) {
+			throw new DomainException("Valor de Limite não pode ser menor ou igual a 0");
+		}
+		else {
+			WithDrawLimit = wd; 
+		}
+	}
 	
-
+	public void WithDraw(double a) throws DomainException{
+		if(a > WithDrawLimit || a >= 0) {
+			throw new DomainException("Withdraw error: The amount exceeds withdraw limit or minus 0");
+		}
+		else {
+			Balance -= a; 
+		}
+	}
+	
+	
 	@Override
 	public String toString() {
 		StringBuilder s = new StringBuilder();
