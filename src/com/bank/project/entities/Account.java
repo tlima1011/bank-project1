@@ -10,15 +10,13 @@ public class Account {
 	private double WithDrawLimit;
 
 	public Account() {
-
+		
 	}
 
 	public Account(int number, String holder, double balance, double withDrawLimit) throws DomainException {
 		Number = number;
 		Holder = holder;
 		Deposit(balance);
-		//Balance = balance;
-		//WithDrawLimit = withDrawLimit; 
 		ValidateWithDrawLimit(withDrawLimit);
 	}
 	
@@ -41,7 +39,7 @@ public class Account {
 	}
 	
 	public void WithDraw(double a) throws DomainException{
-		if(a > WithDrawLimit || a < 0) {
+		if(a > WithDrawLimit || a < 0.0) {
 			throw new DomainException("The amount exceeds withdraw limit or minus 0");
 		}
 		else if(a > Balance) {
@@ -52,12 +50,10 @@ public class Account {
 		}
 	}
 	
-	
 	@Override
 	public String toString() {
 		StringBuilder s = new StringBuilder();
-		s.append(String.format("%.2f", Balance));
+		s.append(String.format("New balance: %.2f", Balance));
 		return s.toString();
 	}
-
 }

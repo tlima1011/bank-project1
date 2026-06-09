@@ -30,7 +30,7 @@ public class Main {
 			System.out.print("Enter amount for withdraw: ");
 			double amount = ler.nextDouble(); 
 			account.WithDraw(amount); 
-			System.out.print("New balance: " + account);
+			System.out.print(account);
 			
 			ler.close();
 		}catch(DomainException e) {
